@@ -139,6 +139,18 @@ def mark_purchased(list_id: str, item_id: str, user_id: str) -> Item:
         ValueError: If the item does not exist in the given list, or if the
                     item is already purchased.
     """
+
+    """ 
+    Question: What does it check before making any changes?
+        The code checks if the query is useable or not. If the item doesn't exist or is already purchased, then there's no reason to mark it as purchased.
+    
+    Question: What happens if an item is already marked as purchased?
+        We raise an error notifying the user that it's already marked as purchased.
+    
+    Question: After it commits changes, what does it return, and what does that tell the caller?
+        it returns the newly updated item with the newly changed parameters, telling the user that the item has now been updated.
+
+    """
     item = Item.query.filter_by(id=item_id, list_id=list_id).first()
     if not item:
         raise ValueError(f"Item {item_id!r} not found in list {list_id!r}")

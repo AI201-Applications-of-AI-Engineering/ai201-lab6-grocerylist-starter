@@ -60,6 +60,23 @@ class Item(db.Model):
 
     is_purchased tracks whether the item has been picked up during shopping.
     purchased_by and purchased_at are set when the item is marked done.
+
+    """
+
+    """
+    Question 1: What fields does Item have? Which ones are always set when an item is added, and which ones start as null?
+    
+    Always set:
+    id, list_id, name, added_by, is_purchased
+
+    starts as null:
+    quantity, unit, category, added_at, purchased_by, purchased_at
+
+    Question 2: Which two fields together record who purchased an item and when?
+    purchased_by, purchased_at
+
+    Question 3: The Item model has an added_by field and a purchased_by field. What does the distinction between these two fields represent in terms of real user behavior?
+    added_by represent who added the item into the list, whereas purchased_by shows who actually bought the item. Two separate distinctions in regards to the list and the cart.
     """
 
     id = db.Column(db.String(36), primary_key=True, default=generate_uuid)
