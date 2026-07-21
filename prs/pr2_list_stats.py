@@ -39,7 +39,7 @@ def get_list_stats(list_id: str) -> dict:
     remaining = total - purchased
 
     by_category = {}
-    for item in items:
+    for item in items: # traces ALL the items
         cat = item.category or "uncategorized"
         by_category[cat] = by_category.get(cat, 0) + 1
 
